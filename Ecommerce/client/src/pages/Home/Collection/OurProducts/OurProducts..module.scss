@@ -1,0 +1,83 @@
+@import '../../../../components/common/GlobalStyle/utilities/variables.scss';
+@import '../../../../components/common/GlobalStyle/utilities/responsive.scss';
+
+
+.wrapper {
+    .heading {
+        font-size: 40px;
+        font-weight: 700;         
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: auto;
+        @include respond-to(medium) {
+            grid-template-columns: auto auto;
+            gap: 30px;
+        }
+        .left {
+            
+            .text {
+                margin: 20px 0;
+                color: $active-color;
+                line-height: 1.5rem;
+
+                .hightLight1 {
+                    color: $black-color;
+                    font-weight: 700;
+                }
+    
+                .hightLight2 {
+                    color: blue;
+                }
+            }
+    
+            .btn {
+                width: 150px;
+                padding: 15px;
+                background-color: $white-color;
+                border: 1px solid $black-color;
+                transition: all 0.5;
+                cursor: pointer;
+    
+                &:hover {
+                    color: $white-color;
+                    background-color: $black-color;
+                }
+            }      
+        }
+    
+        
+        .right {
+            display: grid;
+            grid-template-columns: auto;
+            gap: 30px;
+            @include respond-to(medium) {
+                grid-template-columns: auto auto;
+                gap: 20px;
+            }
+            .rightItems {
+                .type {
+                    margin-top: 100px;
+                    text-align: center;      
+         
+                    .heading {
+                        font-size: 30px;
+                        font-weight: 700;
+                    }
+                    .text {
+                        font-size: 18px;
+                        font-style: italic;
+                        line-height: 2.5rem;
+                        color: $active-color;
+                    }
+    
+                 }
+                .images {
+                    width: 100%;
+                }
+                
+            }
+        }
+    }
+}

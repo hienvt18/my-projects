@@ -1,0 +1,109 @@
+@import '../../../components//common/GlobalStyle/utilities/variables.scss';
+@import '../../../components//common/GlobalStyle/utilities/responsive.scss';
+
+.wrapper {
+    margin: 10px 12px;
+
+    display: grid;
+    grid-template-columns: auto;
+    @include respond-to(medium) {
+        grid-template-columns: auto auto;
+        gap: 30px;
+    }
+    .left {
+        position: relative;
+        margin-bottom: 20px;
+        .images {
+            width: 100%;
+            display: block;
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+
+            .heading {
+                color: $white-color;
+                font-size: 50px;
+            }
+
+            .text {
+                color: $white-color;
+                margin: 20px 0;
+                line-height: 1.6rem;
+                font-style: italic;
+                font-size: 20px;
+            }
+
+            .btn {
+                width: 120px;
+                padding: 12px 20px;
+                border: 1px solid #fff;
+                color: $white-color;
+                text-decoration: none;
+                transition: all .3s;
+
+                &:hover {
+                    background-color: #fff;
+                    color: #2a2a2a;
+                }
+            }
+        }
+    }
+
+    .right {
+        display: grid;
+        grid-template-columns: auto;
+        gap: 20px;
+        @include respond-to(medium) {
+            grid-template-columns: auto auto;
+        }
+        .items {
+            position: relative;
+            .images {
+                width: 100%;
+                display: block;
+            }
+    
+            .content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+    
+                .heading {
+                    color: $white-color;
+                    font-size: 30px;
+                    margin-bottom: 15px;
+                }
+                .text {
+                    color: $white-color;
+                    font-size: 20px;
+                    font-style: italic;
+                    margin-bottom: 25px;
+                }
+
+                .btn {
+                    width: 120px;
+                    padding: 12px 20px;
+                    border: 1px solid #fff;
+                    color: $white-color;
+                    text-decoration: none;
+                    transition: all .3s;
+    
+                    &:hover {
+                        background-color: #fff;
+                        color: #2a2a2a;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+}

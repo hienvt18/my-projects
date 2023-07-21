@@ -1,0 +1,12 @@
+@import '../../../components/common/GlobalStyle/utilities/variables.scss';
+@import '../../../components/common/GlobalStyle/utilities/responsive.scss';
+
+.wrapper {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: auto;
+    gap: 30px;
+    @include respond-to(medium) {
+        grid-template-columns: auto auto auto auto;
+    }
+}

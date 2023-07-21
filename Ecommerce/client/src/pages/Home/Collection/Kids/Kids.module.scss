@@ -1,0 +1,70 @@
+@import '../../../../components/common/GlobalStyle/utilities/variables.scss';
+@import '../../../../components/common/GlobalStyle/utilities/responsive.scss';
+
+
+.wrapper {
+    margin: 100px 0;
+    .heading {
+        font-size: 40px;
+        font-weight: 700;
+    }
+
+    .title {
+        color: $active-color;
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+    .listItems {
+        position: relative;
+        .images {
+            width: 100%;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+
+            .text {
+                .name {
+                    color: $black-color;
+                    font-weight: 700;
+                    font-size: 20px;   
+                    line-height: 2;  
+                }
+
+                .price {
+                    color: $active-color;
+                }
+
+            }
+        }
+
+        .btnCart {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 200px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: $white-color; 
+            cursor: pointer;
+            transition: all 0.3;
+            &:hover {
+                background-color: $black-color;
+                color: $white-color;
+            }   
+        }
+
+        &:hover {
+           .btnCart {
+            display: block;
+           }
+    }
+    }
+}

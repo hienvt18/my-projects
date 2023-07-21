@@ -1,0 +1,86 @@
+@import '../../common/GlobalStyle/utilities/variables.scss';
+@import '../../common/GlobalStyle/utilities/responsive.scss';
+
+.wrapper {
+    margin-top: 150px;
+    background-color: $black-color-2;
+
+    .container {
+        padding: 40px;
+        display: grid;
+        grid-template-columns: auto;
+        gap: 30px;
+
+        @include respond-to(medium) {
+            grid-template-columns: auto auto;
+            width: 70%;
+            margin: auto;  
+        }
+        .left {
+            color: $white-color;
+            text-align: center;
+            line-height: 1.5rem;
+        }
+        .right {
+            @include respond-to(medium) {
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 30px;
+            }
+            .rightItems {
+                padding: 10px 0;
+                text-align: center;
+                line-height: 1.5rem;
+                color: $white-color;
+
+                .footerList {
+                    margin-top: 10px;         
+                    .footerLink {   
+                        padding-bottom: 12px;
+                        list-style: none;   
+                        cursor: pointer;
+                        transition: all 0.5s;
+                        
+                        &:hover {
+                            color: $active-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .copyRight {
+        width: 80%;
+        margin: auto;
+        text-align: center;
+        color: $white-color;
+        line-height: 1.5rem;
+
+        .title {
+            margin-top: 20px;
+        }
+
+        .hightLight {
+            transition: all 0.5s;
+            cursor: pointer;
+            &:hover {
+                color: rgb(163, 101, 101);
+            }
+        }
+
+        .social {
+            margin-top: 10px;
+            font-size: 30px;
+
+            .socialLink {
+                margin-bottom: 35px;
+                transition: all 0.5s;
+                cursor: pointer;
+                &:hover {
+                    color: rgb(163, 101, 101);
+                }
+            }
+        }
+    }
+}

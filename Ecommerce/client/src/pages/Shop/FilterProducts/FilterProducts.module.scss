@@ -1,0 +1,26 @@
+@import '../../../components/common/GlobalStyle/utilities/variables.scss';
+@import '../../../components/common/GlobalStyle/utilities/responsive.scss';
+
+
+.wrapper {
+    .heading {
+        font-size: 30px;
+    }
+
+    .navList {
+        margin-top: 10px;
+        list-style: none;
+        .navLink {
+            font-size: 18px;
+            padding-bottom: 7px;
+            text-decoration: none;
+            cursor: pointer;
+            color: $black-color-2;
+            transition: all 0.5s;
+
+            &:hover {
+                color: $active-color;
+            }
+        }
+    }
+}

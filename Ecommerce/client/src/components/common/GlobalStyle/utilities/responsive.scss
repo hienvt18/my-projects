@@ -1,0 +1,15 @@
+
+//responsive.scss
+$breakpoints: (
+  small: 576px,
+  medium: 768px,
+  large: 992px,
+  xlarge: 1200px,
+);
+
+
+@mixin respond-to($breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+}

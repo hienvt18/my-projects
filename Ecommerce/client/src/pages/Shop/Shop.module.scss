@@ -1,0 +1,18 @@
+@import '../../components/common/GlobalStyle/utilities/variables.scss';
+@import '../../components/common/GlobalStyle/utilities/responsive.scss';
+
+
+.wrapper {
+   margin-top: 50px;
+   .container {
+      width: 70%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr;
+
+     @include respond-to(medium) {
+        grid-template-columns: 0.2fr 1fr;
+     }
+   }
+    
+}

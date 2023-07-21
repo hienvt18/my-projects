@@ -1,0 +1,10 @@
+@import '../../../components/common/GlobalStyle/utilities/variables.scss';
+@import '../../../components/common/GlobalStyle/utilities/responsive.scss';
+
+.wrapper {
+   margin: 10px 12px;
+   @include respond-to(medium) {
+        width: 70%;
+        margin: auto;  
+   }
+}
