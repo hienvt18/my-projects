@@ -1,12 +1,16 @@
 import {createContext, useReducer} from 'react'
-import cartReducer, {initialState} from './CartReducer';
+import reducer, {initialState} from './reducer';
 
-import { ADD_TO_CART, DECREASE_QUANTITY, INCREASE_QUANTITY, REMOVE_FROM_CART } from './actions';
+import { ADD_TO_CART, DECREASE_QUANTITY, INCREASE_QUANTITY, REMOVE_FROM_CART, SET_USER } from './actions';
 
-export const CartContext = createContext();
+export const StateContext = createContext();
 
-export const CartProvider = ({children}) => {
-    const [state, dispatch] = useReducer(cartReducer, initialState);
+export const StateProvider = ({children}) => {
+    const [state, dispatch] = useReducer(reducer, initialState);
+
+    const setUser = () => {
+      dispatch({ type: SET_USER, payload: [] })
+    }
 
     const addToCart = (product) => {
         dispatch({ type: ADD_TO_CART, payload: product });
@@ -33,15 +37,16 @@ export const CartProvider = ({children}) => {
       };
 
     return (
-        <CartContext.Provider value={{   
+        <StateContext.Provider value={{   
             state,
+            setUser,
             addToCart,
             removeFromCart,
             increaseQuantity,
             decreaseQuantity,
             calculateCartTotal, }}>
             {children}
-        </CartContext.Provider>
+        </StateContext.Provider>
     )
 }
 

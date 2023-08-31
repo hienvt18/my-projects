@@ -4,15 +4,13 @@ import { Link } from "react-router-dom"
 
 import {BsArrowRight} from 'react-icons/bs'
 import { useContext } from "react"
-import { CartContext } from "../../store/CartProvider"
+import { StateContext } from "../../store/StateProvider"
 const cx = classNames.bind(styles)
 
 const Cart = () => {
 
-  const { state, removeFromCart, increaseQuantity, decreaseQuantity, calculateCartTotal } = useContext(CartContext);
+  const { state, removeFromCart, increaseQuantity, decreaseQuantity, calculateCartTotal } = useContext(StateContext);
   const { cartItems } = state;
-
-
 
   return (
     <div className={cx('wrapper')}>

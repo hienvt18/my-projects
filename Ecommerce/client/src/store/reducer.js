@@ -1,12 +1,23 @@
-import { ADD_TO_CART,INCREASE_QUANTITY, DECREASE_QUANTITY, REMOVE_FROM_CART } from "./actions";
+import { SET_USER, ADD_TO_CART,INCREASE_QUANTITY, DECREASE_QUANTITY, REMOVE_FROM_CART } from "./actions";
+import { fetchUser } from "../utils/fetchLocalStorageData";
+
+const userInfo = fetchUser()
 
 const initialState = {
+    user: userInfo,
     cartItems: [],
     totalItems: 0,
-  };
+};
+
   
-const cartReducer = (state, action) => {
+const reducer = (state, action) => {
     switch (action.type) {
+      
+      case SET_USER:
+        return {
+          ...state,
+          user: action.user
+        }
       case ADD_TO_CART:
         return {
           ...state,
@@ -41,4 +52,6 @@ const cartReducer = (state, action) => {
 };
 
 export {initialState}
-export default cartReducer
+export default reducer
+
+

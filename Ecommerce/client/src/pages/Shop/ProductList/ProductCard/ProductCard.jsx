@@ -2,14 +2,14 @@ import classNames from "classnames/bind"
 import styles from './ProductCard.module.scss'
 import {AiFillStar} from 'react-icons/ai'
 import { useContext } from "react"
-import { CartContext} from '../../../../store/CartProvider'
+import { StateContext } from "../../../../store/StateProvider"
 import { toast } from 'react-toastify';
 const cx = classNames.bind(styles)
 
 
 const ProductCard = ({product}) => {
 
-  const {addToCart} = useContext(CartContext)
+  const {addToCart} = useContext(StateContext)
   
   const handleAddToCart = () => {
     addToCart(product)

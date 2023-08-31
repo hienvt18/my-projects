@@ -5,7 +5,7 @@ import Shop from "../pages/Shop";
 import Blog from "../pages/Blog";
 import Cart from "../pages/Cart";
 import CheckOut from "../pages/CheckOut";
-import Login from "../pages/Login";
+
 
 const router = createBrowserRouter([
     {
@@ -31,11 +31,6 @@ const router = createBrowserRouter([
                 path: '/blog',
                 element: <Blog/>
             },
-            {
-                path: '/login',
-                element: <Login/>
-            },
-
         ]
     }
 ])

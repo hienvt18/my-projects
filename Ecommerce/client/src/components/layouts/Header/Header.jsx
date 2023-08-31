@@ -1,16 +1,17 @@
 import classNames  from 'classnames/bind';
 import styles from "./Header.module.scss"
 
+import avatar from '../../../assets/images/avatar.png'
 import logo from '../../../assets/images/logo.png'
-import {BiMenu, BiShoppingBag, BiUser} from 'react-icons/bi'
+import { BiMenu, BiShoppingBag } from 'react-icons/bi'
 import {AiOutlineClose} from 'react-icons/ai'
 import { Link, NavLink } from 'react-router-dom';
 
 import { useContext, useState } from 'react';
-import {CartContext} from '../../../store/CartProvider'
+import { StateContext } from '../../../store/StateProvider';
 
-
-
+import app from '../../../firebase/firebase.config'
+import { GoogleAuthProvider, getAuth, signInWithPopup  } from "firebase/auth"
 
 const cx = classNames.bind(styles);
 
@@ -41,10 +42,21 @@ const menuList = [
 
 
 const Header = () => {
-  const { state } = useContext(CartContext);
-  const { totalItems } = state;
+  const { state } = useContext(StateContext);
+  const { totalItems, user } = state;
   const [open, setOpen] = useState(false)
 
+
+  const { setUser } = useContext(StateContext)
+
+  const auth = getAuth(app)
+  const provider = new GoogleAuthProvider(app)
+
+  const handleLogin = async() => {
+      const {user: { providerData }} = await signInWithPopup(auth, provider)
+      setUser(providerData[0])
+      localStorage.setItem('user', JSON.stringify(providerData[0]))
+  }
 
 
   return (
@@ -72,32 +84,30 @@ const Header = () => {
           <Link to="cart">
             <BiShoppingBag className={cx('btnCart')}/>
             <span className={cx('quantity')}>{totalItems}</span>
-          </Link>
-          <Link to="/login">
-            <BiUser className={cx('btnLogin')}/>
-          </Link>
+          </Link> 
+            <img className={cx('avatar')} src={user ? user.photoURL : avatar} alt="" onClick={handleLogin} />
         </div>
 
         {/* Menu Responsive */}
         <div onClick={() => setOpen(!open)}>
-           {open ? (
+          {open ? (
           <AiOutlineClose className={cx('dropMenu')}/>
           ): (<BiMenu className={cx('dropMenu')}/>)}
         </div>
       </div>
 
     {/* Menu Mobile */}
-     {open && (
-       <div className={cx('menuMoblie')} onClick={() => setOpen(false)}>
-        <nav className={cx('dropList')}>
-            {menuList.length > 0 && menuList.map((item,index) => (
-                <NavLink to={item.to}  key={index} className={cx('dropLink')} activeclassname={cx('active')}  >
-                    {item.title}
-                </NavLink>
-            ))}
-        </nav>
-   </div>
-     )}
+      {open && (
+        <div className={cx('menuMoblie')} onClick={() => setOpen(false)}>
+          <nav className={cx('dropList')}>
+              {menuList.length > 0 && menuList.map((item,index) => (
+                  <NavLink to={item.to}  key={index} className={cx('dropLink')} activeclassname={cx('active')}  >
+                      {item.title}
+                  </NavLink>
+              ))}
+          </nav>
+        </div>
+      )}
     </div>
   )
 }

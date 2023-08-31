@@ -6,7 +6,7 @@
 - Let -> dùng để khai báo biến, có thể gán giá trị nhiều lần và không khai báo lại (block scope)
 - Const -> dùng để khai báo 1 lần , chỉ có thể gán 1 giá trị , không được khai báo lại (block scope)
 
-### Nguyên lý hoạt động ++ / -- ?
+### Nguyên lý hoạt động a(++) / (++)a ?
 - (++a) => {
   - Việc 1: +1 cho a, a = a + 1 => a = 7
   - Việc 2: Trả về a sau khi được + 1
@@ -107,15 +107,21 @@
 (ví dụ như trang lotteria có thể gọi sang api của trang kfc nếu không bị block CORS)
 
 ### Hoisting ?
-- Cơ chế hoisting là cơ chế đưa các phần khai báo biến và hàm lên các dòng đầu tiên của Scope chứa nó.
-- Tuy nhiên, chỉ di chuyển các phần khai báo, phần gán giá trị vẫn giữ nguyên vị trí cũ
+-Hoisting trong JavaScript là quá trình di chuyển các khai báo biến và hàm lên đầu phạm vi của chúng trước khi thực thi mã. Điều này có  nghĩa là bạn có thể sử dụng một biến hoặc hàm trước khi nó được khai báo, nhưng giá trị của biến sẽ là undefined cho đến khi khai báo thực sự được thực hiện.
 - var bị ảnh hưởng bởi cơ chế hoisting và hoạt động ở mọi nơi trong global scope
 - let không bị ảnh hưởng bởi hoisting, có thể tái gán giá trị và hoạt động trong block scope
 - const không bị ảnh hưởng bởi hoisting, không thể tái gán giá trị và hoạt động trong block scope
 
 ### Event Loop ?
-- Là để xử lý các sự kiện và callback một cách đồng bộ. Nó sẽ được đưa vào hàng đợi để xử lý. 
-- JS sẽ tiếp tục thực hiện các tác vụ đồng bộ khác. Khi tác vụ bất đồng bộ đã hoàn thành, nó sẽ đưa vào một hàng đợi riêng để trả về kq
+- Event loop có hai thành phần chính:
+  + Call stack: Đây là nơi các hàm được thực thi tuần tự. Khi một hàm được gọi, nó sẽ được đẩy vào call stack và sẽ tiếp tục thực thi cho đến khi nó hoàn thành hoặc gặp phải một lỗi.
+  + Event queue: Đây là nơi các sự kiện bất đồng bộ được lưu trữ. Khi một sự kiện xảy ra, nó sẽ được thêm vào event queue và sẽ được xử lý bởi event loop khi call stack trống.
+Event loop hoạt động như sau:
+  + Các hàm được gọi tuần tự trong call stack.
+  + Khi call stack trống, event loop sẽ kiểm tra event queue.
+  + Nếu event queue có các sự kiện, event loop sẽ lấy sự kiện đầu tiên và xử lý nó.
+  + Nếu event queue không có các sự kiện, event loop sẽ đợi cho đến khi có một sự kiện xảy ra.
+  + Event loop là một phần quan trọng của JavaScript và cho phép JavaScript xử lý các tác vụ bất đồng bộ một cách hiệu quả.
 
 ### JSON (Javascript Obj Notation) ?
 - Là một dịnh dạng dữ liệu (chuỗi) 
@@ -149,7 +155,7 @@ giúp thực thi các tác vụ bất đồng bộ mà không rơi vào callback
 
 ### ES6 {
   ## Template Literals {
-    - cho phép tạo chuỗi có thể truyền biến vào một các dễ dàng, cú pháp sử dụng dấu backtick ``
+    - cho phép tạo chuỗi có thể truyền biến vào một các dễ dàng, cú pháp sử dụng dấu backtick `${}`
   ## } 
 
   ## Clases {
@@ -233,10 +239,4 @@ giúp thực thi các tác vụ bất đồng bộ mà không rơi vào callback
   - document.getElementsById('example')
   - document.getElementsByClassName('example')
   - document.getElementsByTagName('p')
-### }
-
-
-### Javascript effects {
-  - Tạo hiệu ứng hoạt hình
-  - animate, clearQueue, delay, fadeIn, fadeOut, fadeTo, fadeToggle, finish, hide, show, queue, slideDown, slideToggle, slideUp, stop, toggle
 ### }
